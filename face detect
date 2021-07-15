@@ -1,0 +1,20 @@
+import cv2
+import pandas as pd
+import numpy as np
+
+face=cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+
+image=cv2.imread('FaceApp_1614902564306.jpg')
+gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+f=face.detectMultiScale(gray,scaleFactor=1.09,minNeighbors=5)
+for x ,y ,w ,z in f:
+    img=cv2.rectangle(image,(x,y),(x+w,y+z),(0,255,0),3)
+
+r=cv2.resize(img,(400,500))
+cv2.imshow("my image",r)
+
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
